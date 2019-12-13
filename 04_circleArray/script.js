@@ -10,10 +10,30 @@ const height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-context.beginPath();
-context.lineWidth = "5";
-context.fillStyle = "purple";
-context.arc(200,300,100,0,2*Math.PI);
-context.closePath();
-context.stroke();
-context.fill();
+let circleObject = {};
+circleObject.x = 400;
+circleObject.y = 200;
+circleObject.radius = 40;
+circleObject.color = "purple";
+
+circleObject.draw = function(){
+  context.beginPath();
+  context.lineWidth = "5";
+  context.fillStyle = circleObject.color;
+  context.arc(circleObject.x,circleObject.y,circleObject.radius,0,2*Math.PI);
+  context.closePath();
+  context.stroke();
+  context.fill();
+}
+
+circleObject.draw();
+
+circleObject.x = 0;
+circleObject.draw();
+
+function anime(){
+  circleObject.x = circleObject.x + 10;
+  circleObject.draw();
+}
+
+setInterval(anime,100)
