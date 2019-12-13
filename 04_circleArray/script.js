@@ -15,6 +15,8 @@ circleObject.x = 400;
 circleObject.y = 200;
 circleObject.radius = 40;
 circleObject.color = "purple";
+circleObject.speedX = 6;
+circleObject.speedY = 7;
 
 circleObject.draw = function(){
   context.beginPath();
@@ -26,14 +28,31 @@ circleObject.draw = function(){
   context.fill();
 }
 
-circleObject.draw();
+circleObject.update = function(){
+  circleObject.x = circleObject.x + circleObject.speedX;
+  circleObject.y = circleObject.y + circleObject.speedY;
 
-circleObject.x = 0;
-circleObject.draw();
+  if(circleObject.y > height - circleObject.radius){
+    circleObject.speedY = - circleObject.speedY
+  }
+
+  if(circleObject.y < 0){
+    circleObject.speedY =  -circleObject.speedY
+  }
+
+  if(circleObject.x > width - circleObject.radius){
+    circleObject.speedX = - circleObject.speedX;
+  }
+
+  if(circleObject.x < 0){
+    circleObject.speedX =  -circleObject.speedX
+  }
+}
 
 function anime(){
-  circleObject.x = circleObject.x + 10;
+  context.clearRect(0,0,width,height);
+  circleObject.update();
   circleObject.draw();
 }
 
-setInterval(anime,100)
+setInterval(anime,10)
