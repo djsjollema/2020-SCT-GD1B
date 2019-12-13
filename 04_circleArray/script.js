@@ -55,12 +55,6 @@ for(let i =0; i<10 ;i++){
 
 }
 
-
-
-
-
-
-
 function anime(){
   context.clearRect(0,0,width,height);
   circleObject.update();
