@@ -57,11 +57,13 @@ for(let i =0; i<10 ;i++){
 
 function anime(){
   context.clearRect(0,0,width,height);
-  circleObject.update();
-  circleObject.draw();
+  for(let i = 0; i<circles.length;i++){
+    circles[i].update();
+    circles[i].draw();
+  }
 }
 
-//setInterval(anime,10)
+setInterval(anime,10)
 
 
 function getRandomInt(min,max){
